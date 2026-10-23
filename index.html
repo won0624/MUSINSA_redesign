@@ -1,17 +1,518 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUSINSA</title>
-</head>
-<body>
-    <nav class="nav">
-        <div class="brand_icon">MUSINSA</div>
-        <div class="nav_links">
-            <a href="">about</a>
 
-        </div>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Mall Wireframe</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, "Noto Sans KR", sans-serif;
+      color: #222;
+      background: #fff;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* 상단 공지 */
+    .top-banner {
+      background: #222;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+    }
+
+    /* 헤더 */
+    header {
+      border-bottom: 1px solid #ddd;
+    }
+
+    .header-inner {
+      max-width: 1400px;
+      margin: auto;
+      padding: 25px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .search-box {
+      width: 35%;
+      padding: 12px 15px;
+      border: 1px solid #ccc;
+      font-size: 13px;
+    }
+
+    .header-icons {
+      display: flex;
+      gap: 20px;
+      font-size: 13px;
+    }
+
+    /* 내비게이션 */
+    nav {
+      max-width: 1400px;
+      margin: auto;
+      padding: 15px 40px;
+      display: flex;
+      gap: 30px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    /* 공통 레이아웃 */
+    main {
+      max-width: 1400px;
+      margin: auto;
+      padding: 30px 40px;
+    }
+
+    .section {
+      margin-bottom: 65px;
+    }
+
+    .section-title {
+      font-size: 23px;
+      margin-bottom: 22px;
+      font-weight: bold;
+    }
+
+    /* 메인 비주얼 */
+    .hero {
+      height: 420px;
+      background: #e5e5e5;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .hero-label {
+      font-size: 12px;
+      color: #777;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    .hero button {
+      background: #222;
+      color: #fff;
+      border: none;
+      padding: 13px 30px;
+      cursor: pointer;
+    }
+
+    /* 배너 인디케이터 */
+    .slider-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #ccc;
+    }
+
+    .dot.active {
+      background: #222;
+    }
+
+    /* 카테고리 */
+    .category-list {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 20px;
+    }
+
+    .category-item {
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .category-image {
+      height: 110px;
+      background: #e8e8e8;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #999;
+      font-size: 12px;
+    }
+
+    /* 상품 그리드 */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px 18px;
+    }
+
+    .product-image {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      background: #e8e8e8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 12px;
+      margin-bottom: 13px;
+    }
+
+    .product-brand {
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 7px;
+    }
+
+    .product-name {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .product-price {
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .discount {
+      color: #d44;
+      margin-right: 6px;
+    }
+
+    /* 중간 프로모션 배너 */
+    .promotion {
+      background: #ededed;
+      min-height: 220px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .promotion h2 {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .promotion p {
+      color: #777;
+      font-size: 13px;
+    }
+
+    /* 푸터 */
+    footer {
+      background: #222;
+      color: #ddd;
+      padding: 45px 40px;
+      font-size: 12px;
+      line-height: 2;
+    }
+
+    .footer-inner {
+      max-width: 1320px;
+      margin: auto;
+    }
+
+    .footer-logo {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    /* 반응형 */
+    @media (max-width: 768px) {
+      .header-inner {
+        padding: 20px;
+        flex-wrap: wrap;
+      }
+
+      .search-box {
+        order: 3;
+        width: 100%;
+      }
+
+      .header-icons {
+        gap: 10px;
+      }
+
+      nav {
+        padding: 15px 20px;
+        gap: 20px;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      .hero {
+        height: 300px;
+      }
+
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .category-list {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+      }
+
+      .category-image {
+        height: 85px;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px 12px;
+      }
+
+      .section {
+        margin-bottom: 45px;
+      }
+
+      .section-title {
+        font-size: 20px;
+      }
+
+      .promotion h2 {
+        font-size: 23px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 상단 공지 -->
+  <div class="top-banner">
+    NEW SEASON COLLECTION · 신규 회원 혜택 확인하기
+  </div>
+
+  <!-- 헤더 -->
+  <header>
+    <div class="header-inner">
+      <a href="#" class="logo">SHOP.</a>
+
+      <input
+        type="text"
+        class="search-box"
+        placeholder="찾으시는 상품을 검색해보세요."
+      >
+
+      <div class="header-icons">
+        <a href="#">로그인</a>
+        <a href="#">마이페이지</a>
+        <a href="#">장바구니</a>
+      </div>
+    </div>
+
+    <!-- 메뉴 -->
+    <nav>
+      <a href="#">전체 카테고리</a>
+      <a href="#">신상품</a>
+      <a href="#">베스트</a>
+      <a href="#">여성</a>
+      <a href="#">남성</a>
+      <a href="#">라이프</a>
+      <a href="#">세일</a>
+      <a href="#">기획전</a>
     </nav>
+  </header>
+
+  <main>
+
+    <!-- 메인 비주얼 -->
+    <section class="section">
+      <div class="hero">
+        <div class="hero-label">MAIN VISUAL AREA</div>
+        <h1>NEW SEASON</h1>
+        <p>새로운 계절을 위한 새로운 스타일</p>
+        <button>컬렉션 둘러보기</button>
+      </div>
+
+      <div class="slider-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </section>
+
+    <!-- 카테고리 -->
+    <section class="section">
+      <h2 class="section-title">CATEGORY</h2>
+
+      <div class="category-list">
+        <div class="category-item">
+          <div class="category-image">IMAGE 01</div>
+          <p>아우터</p>
+        </div>
+
+        <div class="category-item">
+          <div class="category-image">IMAGE 02</div>
+          <p>상의</p>
+        </div>
+
+        <div class="category-item">
+          <div class="category-image">IMAGE 03</div>
+          <p>하의</p>
+        </div>
+
+        <div class="category-item">
+          <div class="category-image">IMAGE 04</div>
+          <p>신발</p>
+        </div>
+
+        <div class="category-item">
+          <div class="category-image">IMAGE 05</div>
+          <p>가방</p>
+        </div>
+
+        <div class="category-item">
+          <div class="category-image">IMAGE 06</div>
+          <p>액세서리</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 베스트 상품 -->
+    <section class="section">
+      <h2 class="section-title">BEST SELLER</h2>
+
+      <div class="product-grid">
+        <div class="product">
+          <div class="product-image">PRODUCT 01</div>
+          <p class="product-brand">BRAND A</p>
+          <p class="product-name">베이직 오버핏 티셔츠</p>
+          <p class="product-price">
+            <span class="discount">20%</span>39,000원
+          </p>
+        </div>
+
+        <div class="product">
+          <div class="product-image">PRODUCT 02</div>
+          <p class="product-brand">BRAND B</p>
+          <p class="product-name">데일리 와이드 팬츠</p>
+          <p class="product-price">
+            <span class="discount">15%</span>59,000원
+          </p>
+        </div>
+
+        <div class="product">
+          <div class="product-image">PRODUCT 03</div>
+          <p class="product-brand">BRAND C</p>
+          <p class="product-name">클래식 집업 재킷</p>
+          <p class="product-price">
+            <span class="discount">10%</span>89,000원
+          </p>
+        </div>
+
+        <div class="product">
+          <div class="product-image">PRODUCT 04</div>
+          <p class="product-brand">BRAND D</p>
+          <p class="product-name">미니멀 숄더백</p>
+          <p class="product-price">
+            <span class="discount">25%</span>45,000원
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 프로모션 -->
+    <section class="section">
+      <div class="promotion">
+        <div>
+          <p>SEASON SPECIAL EVENT</p>
+          <h2>특별한 시즌 프로모션</h2>
+          <p>지금만 만날 수 있는 다양한 혜택을 확인하세요.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 신상품 -->
+    <section class="section">
+      <h2 class="section-title">NEW ARRIVALS</h2>
+
+      <div class="product-grid">
+        <div class="product">
+          <div class="product-image">PRODUCT 05</div>
+          <p class="product-brand">BRAND E</p>
+          <p class="product-name">신상품 아이템 A</p>
+          <p class="product-price">49,000원</p>
+        </div>
+
+        <div class="product">
+          <div class="product-image">PRODUCT 06</div>
+          <p class="product-brand">BRAND F</p>
+          <p class="product-name">신상품 아이템 B</p>
+          <p class="product-price">69,000원</p>
+        </div>
+
+        <div class="product">
+          <div class="product-image">PRODUCT 07</div>
+          <p class="product-brand">BRAND G</p>
+          <p class="product-name">신상품 아이템 C</p>
+          <p class="product-price">79,000원</p>
+        </div>
+
+        <div class="product">
+          <div class="product-image">PRODUCT 08</div>
+          <p class="product-brand">BRAND H</p>
+          <p class="product-name">신상품 아이템 D</p>
+          <p class="product-price">35,000원</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 푸터 -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">SHOP.</div>
+      <p>회사소개 | 이용약관 | 개인정보처리방침 | 고객센터</p>
+      <p>상호명 : SHOP. | 대표자 : 홍길동</p>
+      <p>주소 : 서울특별시 | 고객센터 : 0000-0000</p>
+      <p>© 2026 SHOP. ALL RIGHTS RESERVED.</p>
+    </div>
+  </footer>
+
 </body>
 </html>
